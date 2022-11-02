@@ -1,5 +1,3 @@
-// import "./index.css"
-// We reserve Controller for the export name
 import { Controller as BaseController } from "@hotwired/stimulus";
 
 const IdSelectorsByPath = {
@@ -14,5 +12,8 @@ export default class Controller extends BaseController {
 
   selectNavItem(id) {
     console.log("Nav tab switched to: ",id);
+    const elem = document.querySelector(`#${id}`)
+    elem.classList.remove("nav-item-deselected")
+    elem.classList.add("nav-item-selected")
   }
 }
