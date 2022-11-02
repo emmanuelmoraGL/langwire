@@ -1,0 +1,15 @@
+class TextInputsController < ApplicationController
+  def index: () -> untyped
+
+  def create: () -> untyped
+
+  def destroy: () -> untyped
+
+  private
+
+  def broadcast: () -> untyped
+
+  def set_text_input: () -> untyped
+
+  def text_input_params: () -> untyped
+end

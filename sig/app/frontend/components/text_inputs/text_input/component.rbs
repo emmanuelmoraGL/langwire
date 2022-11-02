@@ -1,0 +1,9 @@
+class TextInputs::TextInput::Component < ApplicationViewComponent
+  include ActionView::RecordIdentifier
+
+  private
+
+  def recent_text_input?: () -> untyped
+
+  def timestamp: () -> untyped
+end

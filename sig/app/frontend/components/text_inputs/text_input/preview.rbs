@@ -1,0 +1,3 @@
+class TextInputs::TextInput::Preview < ApplicationViewComponentPreview
+  def default: () -> nil
+end

@@ -1,0 +1,25 @@
+module Broadcast
+  module Strategies
+    class Simple
+      extend Dry::Initializer
+
+      def prepend: () -> untyped
+
+      def remove: () -> untyped
+
+      private
+
+      def channel: () -> untyped
+
+      def collection_target: () -> untyped
+
+      def singular_target: () -> untyped
+
+      def singular_sym: () -> untyped
+
+      def rendered_component: () -> untyped
+
+      def component_opts: () -> untyped
+    end
+  end
+end

@@ -1,0 +1,9 @@
+---
+name: listen
+version: '3.2'
+source:
+  type: git
+  name: ruby/gem_rbs_collection
+  revision: cef6a54ccb3d48a9d19ccd592e24fea493292bcc
+  remote: https://github.com/ruby/gem_rbs_collection.git
+  repo_dir: gems

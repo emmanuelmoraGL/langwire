@@ -1,0 +1,2 @@
+class TextOutput < ApplicationRecord
+end

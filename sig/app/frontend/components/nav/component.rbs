@@ -1,0 +1,2 @@
+class Nav::Component < ApplicationViewComponent
+end

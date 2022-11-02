@@ -1,0 +1,3 @@
+class TextInputs::New::Component < ApplicationViewComponent
+  include ActionView::RecordIdentifier
+end
