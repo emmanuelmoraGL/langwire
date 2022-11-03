@@ -1,0 +1,7 @@
+.git
+.cache
+.gem_rbs_collection
+sig
+*.md
+!README*.md
+README-secret.md
