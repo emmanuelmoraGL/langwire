@@ -2,29 +2,51 @@
 
 This repository purpose is:
 - POC new features of rails 7: hotwire, turbo drive, frame, streams, stymulus.
-- POC ruby 3.x type system tools like rbs, steep & typeprof.
+- POC new featuers of ruby 3.x type system tools like rbs, steep & typeprof.
+- Visualize a Grammar Tree of a sentence in German using [ParZu](https://github.com/rsennrich/ParZu).
 
-# TODO
+## Architecture Documentation
+[RFC - Hotwire POC](https://docs.google.com/document/d/1FkmmALtsmQI4VG-ImMys6Czxt2ka7GQ0rSbovHY_W3U/edit)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Infrastructure
+See infra repo, using terraform and gorillalogiclabs AWS Account
 
-Things you may want to cover:
+https://github.com/gorillalogic/langwire-infra
 
-* Ruby version
+## Dependencies
+1. ruby 3.1.2, It is recommended to use rbenv as version manager.
+2. ParZu Grammar Tree Parser, which is available here https://github.com/rsennrich/ParZu. To pull the image:
+```bash
+docker pull rsennrich/parzu
+```
 
-* System dependencies
+## Private Docker Registry
+It uses AWS ECR (Elastic Container Registry), to setup run:
+```bash
+aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com
+```
+then, to build and push:
+```bash
+docker build . --tag <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
+docker push <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
+```
 
-* Configuration
+## Local setup
+1. Clone the repo 
+```bash
+git clone git@github.com:gorillalogic/langwire.git
+```
+2. Run the following commands either locally or inside a container:
+```bash
+bundle install
+bundle exec rake db:create
+bundle exec rake db:schema:load
+```
+3. To run tests
+```bash
+bundle exec rspec
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Future Work
+- Replace sqlite(default) with DynamoDB.
+- CI/CD
