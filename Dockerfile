@@ -6,4 +6,4 @@ COPY Gemfile Gemfile.lock ./
 RUN bundle install
 
 COPY . .
-CMD bundle exec rails s -p 8000
+CMD bundle exec rails s -p 8000 -b 0.0.0.0
