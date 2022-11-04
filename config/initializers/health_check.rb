@@ -18,7 +18,7 @@ HealthCheck.setup do |config|
   config.log_level = 'info'
 
   # Timeout in seconds used when checking smtp server
-  config.smtp_timeout = 30.0
+  # config.smtp_timeout = 30.0
 
   # http status code used when plain text error message is output
   # Set to 200 if you want your want to distinguish between partial (text does not include success) and
@@ -33,7 +33,7 @@ HealthCheck.setup do |config|
   config.http_status_for_error_object = 500
 
   # bucket names to test connectivity - required only if s3 check used, access permissions can be mixed
-  config.buckets = {'bucket_name' => [:R, :W, :D]}
+  # config.buckets = {'bucket_name' => [:R, :W, :D]}
 
   # You can customize which checks happen on a standard health check, eg to set an explicit list use:
   config.standard_checks = [
