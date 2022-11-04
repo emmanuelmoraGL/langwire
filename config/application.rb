@@ -25,5 +25,8 @@ module Langwire
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+    config.generators do |g|
+      g.orm :aws_record
+    end
   end
 end
