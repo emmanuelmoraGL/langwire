@@ -28,5 +28,7 @@ module Langwire
     config.generators do |g|
       g.orm :aws_record
     end
+
+    config.parzu_host = "http://localhost:5003/"
   end
 end
