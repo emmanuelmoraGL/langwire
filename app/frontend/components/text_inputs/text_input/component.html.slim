@@ -1,5 +1,7 @@
 = tag.div id: dom_id(text_input), class: "w-full flex" do
   .flex-none.w-74
+    = tag.label text_input.id 
+  .flex-none.w-74
     = tag.label text_input_contents
   .flex-grow.text-left.px-5
     = tag.label timestamp

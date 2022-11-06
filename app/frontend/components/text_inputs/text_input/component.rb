@@ -13,6 +13,6 @@ class TextInputs::TextInput::Component < ApplicationViewComponent
   end
 
   def timestamp
-    text_input_created_at.strftime("%Y-%m-%d at %H:%M")
+    text_input.created_at.strftime("%Y-%m-%d at %H:%M")
   end
 end

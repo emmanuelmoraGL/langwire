@@ -4,7 +4,7 @@ class TextInputsController < ApplicationController
   before_action :set_text_input, only: %i[destroy]
 
   def index
-    @text_inputs = TextInput.scan
+    @text_inputs = TextInput.scan.to_a
   end
 
   def create
@@ -17,7 +17,7 @@ class TextInputsController < ApplicationController
   end
 
   def destroy
-    @text_input.destroy!
+    @text_input.delete!
     broadcast.remove
 
     respond_to do |format|
@@ -35,7 +35,15 @@ class TextInputsController < ApplicationController
   end
 
   def set_text_input
-    @text_input = TextInput.find(params[:id])
+    @text_input = TextInput.query(
+      key_condition_expression: '#H = :h',
+      expression_attribute_names: {
+        '#H' => 'uuid'
+      },
+      expression_attribute_values: {
+        ':h' => params[:id]
+      }
+    ).first
   end
 
   def text_input_params

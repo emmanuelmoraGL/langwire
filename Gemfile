@@ -70,6 +70,7 @@ gem 'slim-rails'
 gem 'health_check'
 
 # AWS DynamoDB
+gem 'aws-record', '~> 2.0'
 gem 'aws-sdk-dynamodb'
 gem 'aws-sdk-rails'
 

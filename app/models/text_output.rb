@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 class TextOutput
-  include Aws::Record
-  include ::Identificable
-  include ::Timestampable
-
+  include ActiveAwsRecord::Base
   string_attr :text
   string_attr :format
 end

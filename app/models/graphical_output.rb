@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
 class GraphicalOutput
-  include Aws::Record
-  include ::Identificable
-  include ::Timestampable
+  include ActiveAwsRecord::Base
 
   string_attr :name
   string_attr :url
