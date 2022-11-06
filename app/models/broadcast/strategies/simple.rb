@@ -5,7 +5,7 @@ module Broadcast
 
       param :resource
       param :component
-      param :opts, default: proc { {component: {}} }
+      param :opts, default: proc { { component: {} } }
 
       def prepend
         Turbo::StreamsChannel.broadcast_prepend_later_to(
@@ -33,7 +33,7 @@ module Broadcast
       end
 
       def singular_target
-        [resource.class.name.singularize.underscore, resource.id].join("_")
+        [resource.class.name.singularize.underscore, resource.id].join('_')
       end
 
       def singular_sym
@@ -45,7 +45,7 @@ module Broadcast
       end
 
       def component_opts
-        {singular_sym => resource}.merge(opts[:component])
+        { singular_sym => resource }.merge(opts[:component])
       end
     end
   end

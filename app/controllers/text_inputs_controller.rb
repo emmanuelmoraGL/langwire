@@ -8,7 +8,8 @@ class TextInputsController < ApplicationController
   end
 
   def create
-    @text_input = TextInput.new(contents: params[:contents]).save!
+    @text_input = TextInput.new(contents: params[:contents])
+    @text_input.save!
     broadcast.prepend
 
     respond_to do |format|
@@ -28,7 +29,7 @@ class TextInputsController < ApplicationController
   private
 
   def broadcast
-    @broadcast ||= Broadcast::Strategies::Simple.new(
+    Broadcast::Strategies::Simple.new(
       @text_input,
       ::TextInputs::TextInput::Component
     )
