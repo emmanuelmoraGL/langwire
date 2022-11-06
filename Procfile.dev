@@ -1,3 +1,5 @@
 web: bin/rails server -p 3000
 css: bin/rails tailwindcss:watch
-db: cd local/dynamodb && ./start.sh
+
+# Not yet configured in Rails
+# db: cd local/dynamodb && ./start.sh

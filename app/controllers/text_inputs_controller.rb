@@ -4,11 +4,11 @@ class TextInputsController < ApplicationController
   before_action :set_text_input, only: %i[destroy]
 
   def index
-    @text_inputs = TextInput.all.order(created_at: :desc)
+    @text_inputs = TextInput.scan
   end
 
   def create
-    @text_input = TextInput.create!(contents: params[:contents])
+    @text_input = TextInput.new(contents: params[:contents]).save!
     broadcast.prepend
 
     respond_to do |format|

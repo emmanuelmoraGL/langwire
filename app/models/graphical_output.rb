@@ -1,9 +1,10 @@
-require 'aws-record'
+# frozen_string_literal: true
 
 class GraphicalOutput
   include Aws::Record
+  include ::Identificable
+  include ::Timestampable
 
-  string_attr :uuid, hash_key: true
   string_attr :name
   string_attr :url
   string_attr :format

@@ -1,10 +1,9 @@
-require 'aws-record'
+# frozen_string_literal: true
 
 class TextInput
   include Aws::Record
+  include ::Identificable
+  include ::Timestampable
 
-  string_attr :uuid, hash_key: true
   string_attr :contents
-  string_attr :created_at
-  string_attr :updated_at
 end
