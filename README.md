@@ -30,6 +30,10 @@ then, to build and push:
 docker build . --tag <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 docker push <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 ```
+finally, to deploy, run on the infra repository:
+```bash
+terraform apply -replace="aws_ecs_task_definition.main"
+```
 
 ## Local setup
 1. Clone the repo 
