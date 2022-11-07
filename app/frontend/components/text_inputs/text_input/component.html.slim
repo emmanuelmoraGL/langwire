@@ -1,11 +1,21 @@
 .w-full.flex.flex-col.border-solid.border-2.border-orange-300.rounded-lg.p-5.m-2.space-y-2 id=dom_id(text_input)
-  .flex-grow.text-gray-400.text-xs
-    .flex-row.space-x-5
-      = tag.label text_input.id 
-      = tag.label timestamp
-  .flex-grow
-    = tag.label text_input_contents
-  .flex-grow
-    = text_input.output_conll
-  .flex-none
+  .flex.text-gray-400.text-xs.flex-row.space-x-5
+    = tag.label text_input.id 
+    = tag.label timestamp
+    .flex-grow
     = button_to 'Delete', text_input_path(text_input), method: :delete, class: "btn-danger"
+  .flex-grow.italic
+    = tag.label "✍️ #{text_input_contents}"
+  .flex-grow.p-5.overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200
+    table.table-auto.min-w-full.divide-y.divide-gray-200.text-sm
+      .thead.bg-gray-100
+        tr
+          - conll_field_names.each do |col|
+            th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+              = col 
+      .tbody
+        - text_input.parsed_output_conll.each do |row|
+          tr
+            - row.each do |col|
+              td.whitespace-nowrap.px-4.py-2.text-gray-700
+                = col
