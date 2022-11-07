@@ -9,6 +9,7 @@ class TextInputsController < ApplicationController
 
   def create
     create_record
+    extract_grammar
     broadcast.prepend
 
     respond_to do |format|
@@ -30,6 +31,10 @@ class TextInputsController < ApplicationController
   def create_record
     @text_input = TextInput.new(contents: params[:contents])
     @text_input.save!
+  end
+
+  def extract_grammar 
+    @grammar = Parzu::Service.new(params[:contents]).extract_grammar
   end
 
   def broadcast

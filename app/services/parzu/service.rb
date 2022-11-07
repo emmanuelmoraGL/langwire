@@ -15,6 +15,8 @@ module Parzu
       end
     end
 
+    private
+
     def client
       Client.new(Rails.application.config.parzu_host)
     end
