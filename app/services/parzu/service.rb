@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 module Parzu
   class Service
     extend Dry::Initializer
     extend Memoist
 
-    param :text
+    param :record
 
     def extract_grammar
-      response = client.query(text)
+      response = client.query(record.contents)
       if response.success?
-        connl_rows = Parser.new(response.body).parse
-        connl_rows.map { |row| GrammarDescription.new(row) }
+        conll_rows = Parser.new(response.body).parse
+        conll_rows.map { |row| GrammarDescription.new(row) }
+        record.update!(output_conll: conll_rows)
       else
         []
       end

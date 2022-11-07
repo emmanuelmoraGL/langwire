@@ -34,7 +34,7 @@ class TextInputsController < ApplicationController
   end
 
   def extract_grammar 
-    @grammar = Parzu::Service.new(params[:contents]).extract_grammar
+    @grammar = Parzu::Service.new(@text_input).extract_grammar
   end
 
   def broadcast

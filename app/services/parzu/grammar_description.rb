@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Parzu
   class GrammarDescription
     extend Dry::Initializer

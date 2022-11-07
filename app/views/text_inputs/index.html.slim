@@ -1,5 +1,6 @@
 .flex-col.w-full.space-y-5
   = turbo_stream_from "text_inputs"
   == render TextInputs::New::Component.new
+  .h2.text-xl Last Queries
   #text_inputs.flex-col-space-y-5
     == render TextInputs::TextInput::Component.with_collection(@text_inputs)

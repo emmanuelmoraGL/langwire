@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Parzu
   class Parser
     extend Dry::Initializer
