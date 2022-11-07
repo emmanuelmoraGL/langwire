@@ -5,12 +5,6 @@ module Parzu
 
     param :host
 
-    class << self
-      def default
-        @instance ||= new(Rails.application.config.parzu_host)
-      end
-    end
-
     def query(query_text)
       conn.get('parse/', 'text' => query_text)
     end

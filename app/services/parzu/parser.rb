@@ -1,12 +1,12 @@
 module Parzu
-  module Parser
+  class Parser
     extend Dry::Initializer
     extend Memoist
 
-    param :sentence
+    param :text
 
     def parse
-      sentence.split('\n').map{ |l| split('\t') }
+      text.split("\n").map { |line| line.split("\t") }
     end
   end
 end
