@@ -22,7 +22,7 @@ class TextInput
   def self.recent_texts
     TextInput.build_scan
              .filter_expr(':updated_at > ?', 2.weeks.ago.iso8601)
+             .limit(10)
              .complete!
-             .page
   end
 end
