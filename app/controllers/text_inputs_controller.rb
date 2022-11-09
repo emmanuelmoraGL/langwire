@@ -4,7 +4,9 @@ class TextInputsController < ApplicationController
   before_action :set_text_input, only: %i[destroy]
 
   def index
-    @text_inputs = TextInput.scan.to_a
+    @text_inputs = TextInput.build_scan
+      .on_index(:recent_texts)
+      .scan_ascending(false)
   end
 
   def create

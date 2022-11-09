@@ -12,7 +12,9 @@ module Parzu
     end
 
     def conn
-      Faraday.new(host)
+      Faraday.new(host) do |conn|
+        conn.options.timeout = 30
+      end
     end
     memoize :conn
   end

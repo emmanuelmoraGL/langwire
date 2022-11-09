@@ -7,6 +7,7 @@ module ActiveAwsRecord
       include ActiveModel::Conversion
       include Identificable
       include Timestampable
+      include TablePrefixed
     end
   end
 end
