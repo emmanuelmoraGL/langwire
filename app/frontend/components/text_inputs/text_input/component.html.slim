@@ -14,12 +14,17 @@
               id: "btn-vis-grammar-table",
               method: :post,
               class: "btn-primary",
-              params: { visualization: "grammar_table", target: "visualization_#{text_input.uuid}", controllers: identifier }
+              params: { visualization: "table", target: "visualization_#{text_input.uuid}" }
         .flex-none.inline-block
-          = button_to 'Show Graph', text_input_path(text_input),
-            id: "btn-vis-grammar-table-#{text_input.uuid}",
+          = button_to 'Show Graph', text_input_visualization_path(text_input),
+            id: "btn-vis-graph",
             method: :post,
-            class: "btn-primary"
+            class: "btn-primary",
+            params: { visualization: "graph", target: "visualization_#{text_input.uuid}" }
         .flex-none.inline-block
-          = button_to 'Show Simplified', text_input_path(text_input), method: :post, class: "btn-primary"
+          = button_to 'Show Simplified', text_input_visualization_path(text_input),
+            id: "btn-vis-simplified",
+            method: :post,
+            class: "btn-primary",
+            params: { visualization: "simplified", target: "visualization_#{text_input.uuid}" }
       turbo-frame id="visualization_#{text_input.uuid}"

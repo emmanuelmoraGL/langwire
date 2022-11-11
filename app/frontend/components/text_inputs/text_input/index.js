@@ -11,9 +11,18 @@ export default class Controller extends BaseController {
   }
 
   grammarTableEventHandler(event) {
+    this.selectBtnVis(event, 'btn-vis-grammar-table')
+  }
+
+  selectBtnVis(event, id){
     if (event.detail.textInputId == this.data.get('textInputId')){
-      const elem = this.element.querySelector('#btn-vis-grammar-table')
-      elem.classList.add("btn-primary-selected")
+      this.element.querySelectorAll("[id^='btn-vis']").forEach((btnVis) => {
+        if (btnVis.id == id) {
+          btnVis.classList.add('btn-primary-selected')
+        } else {
+          btnVis.classList.remove('btn-primary-selected')
+        }
+      })
 
       event.preventDefault();
     }

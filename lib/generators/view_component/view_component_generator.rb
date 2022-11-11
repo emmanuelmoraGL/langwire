@@ -6,6 +6,7 @@ class ViewComponentGenerator < Rails::Generators::NamedBase
 
   class_option :skip_test, type: :boolean, default: false
   class_option :skip_preview, type: :boolean, default: false
+  class_option :skip_stimulus, type: :boolean, default: false
 
   argument :attributes, type: :array, default: [], banner: "attribute"
 
@@ -14,7 +15,7 @@ class ViewComponentGenerator < Rails::Generators::NamedBase
   end
 
   def create_template_file
-    template "component.html.erb", File.join("app/frontend/components", class_path, file_name, "component.html.erb")
+    template "component.html.slim", File.join("app/frontend/components", class_path, file_name, "component.html.slim")
   end
 
   def create_test_file
@@ -27,6 +28,12 @@ class ViewComponentGenerator < Rails::Generators::NamedBase
     return if options[:skip_preview]
 
     template "preview.rb", File.join("app/frontend/components", class_path, file_name, "preview.rb")
+  end
+
+  def create_stimulus_file
+    return if options[:skip_stimulus]
+
+    template "index.js", File.join("app/frontend/components", class_path, file_name, "index.js")
   end
 
   private

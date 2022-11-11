@@ -43,17 +43,25 @@ class TextInputsController < ApplicationController
       'text_inputs',
       target: params[:target],
       html: ApplicationController.render(
-        select_show_component.new(
-          conll_arr: @text_input.parsed_output_conll,
-          text_input_id: @text_input.id
-        ),
+        select_show_component, 
         layout: false
       )
     )
   end
 
   def select_show_component
-    { 'grammar_table' => GrammarTable::Component }[params[:visualization]]
+    {
+      'table' => GrammarTable::Component.new(
+        conll_arr: @text_input.parsed_output_conll,
+        text_input_id: @text_input.id
+      ),
+      'graph' => GrammarGraph::Component.new(
+        image_url: 'https://blog.workman.com/wp-content/uploads/2015/02/Baby-Capybara-1.jpg' 
+      ),
+      'simplified' => GrammarSimplified::Component.new(
+        data: {}
+      )
+    }[params[:visualization]]
   end
 
   def create_record
