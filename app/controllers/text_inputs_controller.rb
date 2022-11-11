@@ -7,10 +7,20 @@ class TextInputsController < ApplicationController
     @text_inputs = TextInput.recent_texts.page
   end
 
+  def visualization
+    @text_input = TextInput.find(uuid: params[:text_input_id])
+    broadcast_visualization
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
+
   def create
     create_record
     extract_grammar
-    broadcast.prepend
+
+    broadcast(@text_input, ::TextInputs::TextInput::Component).prepend
 
     respond_to do |format|
       format.turbo_stream
@@ -19,7 +29,7 @@ class TextInputsController < ApplicationController
 
   def destroy
     @text_input.delete!
-    broadcast.remove
+    broadcast(@text_input, ::TextInputs::TextInput::Component).remove
 
     respond_to do |format|
       format.turbo_stream
@@ -28,19 +38,37 @@ class TextInputsController < ApplicationController
 
   private
 
+  def broadcast_visualization
+    Turbo::StreamsChannel.broadcast_replace_later_to(
+      'text_inputs',
+      target: params[:target],
+      html: ApplicationController.render(
+        select_show_component.new(
+          conll_arr: @text_input.parsed_output_conll,
+          text_input_id: @text_input.id
+        ),
+        layout: false
+      )
+    )
+  end
+
+  def select_show_component
+    { 'grammar_table' => GrammarTable::Component }[params[:visualization]]
+  end
+
   def create_record
     @text_input = TextInput.new(contents: params[:contents])
     @text_input.save!
   end
 
-  def extract_grammar 
+  def extract_grammar
     @grammar = Parzu::Service.new(@text_input).extract_grammar
   end
 
-  def broadcast
+  def broadcast(component_input, component)
     Broadcast::Strategies::Simple.new(
-      @text_input,
-      ::TextInputs::TextInput::Component
+      component_input,
+      component
     )
   end
 

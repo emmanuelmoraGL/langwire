@@ -3,6 +3,10 @@
 class GrammarTable::Component < ApplicationViewComponent
   include ActionView::RecordIdentifier
 
-  with_collection_parameter :conll_arr
   option :conll_arr
+  option :text_input_id
+
+  def conll_field_names
+    Parzu::GrammarDescription::FIELDS.map { |sym| sym.to_s.upcase }
+  end
 end

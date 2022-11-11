@@ -1,14 +1,25 @@
-.w-full.flex.flex-col.border-solid.border-2.border-orange-300.rounded-lg.p-5.m-2.space-y-2 id=dom_id(text_input)
-  .flex.text-gray-400.text-xs.flex-row.space-x-5
-    = tag.label text_input.id 
-    = tag.label timestamp
-    .flex-grow
-    = button_to 'Delete', text_input_path(text_input), method: :delete, class: "btn-danger"
-  .flex-grow.italic
-    = tag.label "✍️ #{text_input_contents}"
-  .flex-grow
-    .flex-row.space-x-2
-      button.btn-primary Show Grammar Table
-      button.btn-primary Show Graph
-      button.btn-primary Show Simplified
-
+= tag.div data: { controller: identifier, "#{identifier}-text-input-id": text_input.id } 
+  .w-full.flex.flex-col.border-solid.border-2.border-orange-300.rounded-lg.p-5.m-2.space-y-2 id=dom_id(text_input)
+    .flex.text-gray-400.text-xs.flex-row.space-x-5
+      = tag.label text_input.id 
+      = tag.label timestamp
+      .flex-grow
+      = button_to 'Delete', text_input_path(text_input), method: :delete, class: "btn-danger"
+    .flex-grow.italic
+      = tag.label "✍️ #{text_input_contents}"
+    .flex-grow.space-y-5
+      .flex-row.space-x-2
+        .flex-none.inline-block
+            = button_to 'Show Grammar Table', text_input_visualization_path(text_input),
+              id: "btn-vis-grammar-table",
+              method: :post,
+              class: "btn-primary",
+              params: { visualization: "grammar_table", target: "visualization_#{text_input.uuid}", controllers: identifier }
+        .flex-none.inline-block
+          = button_to 'Show Graph', text_input_path(text_input),
+            id: "btn-vis-grammar-table-#{text_input.uuid}",
+            method: :post,
+            class: "btn-primary"
+        .flex-none.inline-block
+          = button_to 'Show Simplified', text_input_path(text_input), method: :post, class: "btn-primary"
+      turbo-frame id="visualization_#{text_input.uuid}"

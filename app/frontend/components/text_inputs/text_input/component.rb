@@ -15,8 +15,4 @@ class TextInputs::TextInput::Component < ApplicationViewComponent
   def timestamp
     text_input.created_at.strftime("%Y-%m-%d at %H:%M")
   end
-
-  def conll_field_names
-    Parzu::GrammarDescription::FIELDS.map { |sym| sym.to_s.upcase }
-  end
 end
