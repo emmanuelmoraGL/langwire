@@ -2,4 +2,5 @@
 
 class GrammarSimplified::Component < ApplicationViewComponent
   option :data
+  option :text_input_id
 end

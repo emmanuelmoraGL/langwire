@@ -1,5 +1,6 @@
 class ApplicationViewComponent < ViewComponentContrib::Base
   extend Dry::Initializer
+  include ActionView::RecordIdentifier
 
   # https://github.com/ViewComponent/view_component/issues/639#issuecomment-816969723
   def self.initialize_parameters

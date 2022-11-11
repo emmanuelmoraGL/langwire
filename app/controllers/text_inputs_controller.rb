@@ -56,10 +56,12 @@ class TextInputsController < ApplicationController
         text_input_id: @text_input.id
       ),
       'graph' => GrammarGraph::Component.new(
-        image_url: 'https://blog.workman.com/wp-content/uploads/2015/02/Baby-Capybara-1.jpg' 
+        image_url: 'https://blog.workman.com/wp-content/uploads/2015/02/Baby-Capybara-1.jpg',
+        text_input_id: @text_input.id
       ),
       'simplified' => GrammarSimplified::Component.new(
-        data: {}
+        data: {},
+        text_input_id: @text_input.id
       )
     }[params[:visualization]]
   end

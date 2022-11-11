@@ -2,5 +2,18 @@
 import { Controller as BaseController } from "@hotwired/stimulus";
 
 export default class Controller extends BaseController {
-  connect() {}
+  connect() {
+    this.notifyOnConnect()
+  }
+
+  notifyOnConnect() {
+    let textInputId = this.data.get('textInputId')
+    let event = new CustomEvent('visualization_connect', { 
+      detail: {
+        type: "graph",
+        textInputId: textInputId
+      }
+    })
+    document.dispatchEvent(event)
+  }
 }

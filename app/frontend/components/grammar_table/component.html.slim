@@ -1,14 +1,15 @@
-= tag.div data: { controller: identifier, "#{identifier}-text-input-id": text_input_id } 
-.flex-grow.p-5.overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200
-  table.table-auto.min-w-full.divide-y.divide-gray-200.text-sm
-    .thead.bg-gray-100
-      tr
-        - conll_field_names.each do |col|
-          th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
-            = col 
-    .tbody
-      - conll_arr.each do |row|
-        tr
-          - row.each do |col|
-            td.whitespace-nowrap.px-4.py-2.text-gray-700
-              = col
+= tag.div id: "visualization_#{text_input_id}"
+  = tag.div data: { controller: identifier, "#{identifier}-text-input-id": text_input_id } 
+    .flex-grow.p-5.overflow-hidden.overflow-x-auto.rounded-lg.border.border-gray-200
+      table.table-auto.min-w-full.divide-y.divide-gray-200.text-sm
+        .thead.bg-gray-100
+          tr
+            - conll_field_names.each do |col|
+              th.whitespace-nowrap.px-4.py-2.text-left.font-medium.text-gray-900
+                = col 
+        .tbody
+          - conll_arr.each do |row|
+            tr
+              - row.each do |col|
+                td.whitespace-nowrap.px-4.py-2.text-gray-700
+                  = col

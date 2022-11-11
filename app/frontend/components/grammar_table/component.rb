@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class GrammarTable::Component < ApplicationViewComponent
-  include ActionView::RecordIdentifier
-
   option :conll_arr
   option :text_input_id
 

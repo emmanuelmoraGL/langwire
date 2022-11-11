@@ -3,10 +3,14 @@ import { Controller as BaseController } from '@hotwired/stimulus';
 
 export default class Controller extends BaseController {
   connect() {
+    this.notifyOnConnect()
+  }
+
+  notifyOnConnect() {
     let textInputId = this.data.get('textInputId')
-    let event = new CustomEvent('grammar_table_event', { 
+    let event = new CustomEvent('visualization_connect', { 
       detail: {
-        type: 'connect',
+        type: "table",
         textInputId: textInputId
       }
     })
