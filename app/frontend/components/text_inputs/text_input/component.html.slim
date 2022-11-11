@@ -8,7 +8,7 @@
     .flex-grow.italic
       = tag.label "✍️ #{text_input_contents}"
     .flex-grow.space-y-5
-      .flex-row.space-x-2
+      .flex-row.space-x-2.space-y-2
         .flex-none.inline-block
             = button_to 'Show Grammar Table', text_input_visualization_path(text_input),
               id: "btn-vis-table",
