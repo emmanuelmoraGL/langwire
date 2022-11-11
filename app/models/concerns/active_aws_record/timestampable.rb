@@ -6,9 +6,9 @@ module ActiveAwsRecord
       datetime_attr :updated_at
     end
 
-    def initialize(attr_values = {})
+    def attrs_timestamps
       timestamp = Time.now
-      super({ created_at: timestamp, updated_at: timestamp }.merge(attr_values))
+      { created_at: timestamp, updated_at: timestamp }
     end
   end
 end

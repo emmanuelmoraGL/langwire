@@ -5,15 +5,33 @@ class TextInput
 
   string_attr :contents
   string_attr :output_conll
+  integer_attr :user_id
+
+  global_secondary_index(
+    :recent_texts,
+    hash_key: :user_id,
+    range_key: :updated_at,
+    projection: {
+      projection_type: 'ALL'
+    }
+  )
 
   def parsed_output_conll
     output_conll ? JSON.parse(output_conll) : []
   end
 
   def self.recent_texts
-    TextInput.build_scan
-             .filter_expr(':updated_at > ?', 2.weeks.ago.iso8601)
+    TextInput.build_query
+             .on_index(:recent_texts)
+             .key_expr(':user_id = ? AND :updated_at > ?', 1, 2.weeks.ago.iso8601)
+             .scan_ascending(false)
              .limit(10)
              .complete!
+  end
+
+  def initialize(attr_values = {})
+    attrs_user = { user_id: 1 }
+    # Harcoded value because there is no user management yet.
+    super(attrs_identifier.merge(attrs_timestamps).merge(attrs_user).merge(attr_values))
   end
 end
