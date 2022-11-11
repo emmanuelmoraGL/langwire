@@ -12,7 +12,8 @@ class TextInput
     hash_key: :user_id,
     range_key: :updated_at,
     projection: {
-      projection_type: 'ALL'
+      projection_type: 'INCLUDE',
+      non_key_attributes: ['contents']
     }
   )
 
@@ -30,7 +31,7 @@ class TextInput
   end
 
   def initialize(attr_values = {})
-    attr_values.merge!(attrs_users) 
+    attr_values.merge!(attrs_users)
     attr_values.merge!(attrs_identifier)
     attr_values.merge!(attrs_timestamps)
     super(attr_values)
