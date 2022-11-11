@@ -30,5 +30,6 @@ module Langwire
     end
 
     config.parzu_host = "http://localhost:5003/"
+    config.s3_bucket = "langwire-labs"
   end
 end

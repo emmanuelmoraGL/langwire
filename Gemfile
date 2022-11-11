@@ -70,6 +70,7 @@ gem 'health_check'
 gem 'aws-record', '~> 2.0'
 gem 'aws-sdk-dynamodb'
 gem 'aws-sdk-rails'
+gem 'aws-sdk-s3'
 
 # Better HTTP requests
 gem 'faraday'

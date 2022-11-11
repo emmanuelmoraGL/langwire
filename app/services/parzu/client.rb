@@ -7,8 +7,8 @@ module Parzu
 
     param :host
 
-    def query(query_text)
-      conn.get('parse/', 'text' => query_text)
+    def query(query_text, format: 'conll')
+      conn.get('parse/', { 'text' => query_text, 'format' => format })
     end
 
     def conn

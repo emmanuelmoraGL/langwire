@@ -56,7 +56,7 @@ class TextInputsController < ApplicationController
         text_input_id: @text_input.id
       ),
       'graph' => GrammarGraph::Component.new(
-        image_url: 'https://blog.workman.com/wp-content/uploads/2015/02/Baby-Capybara-1.jpg',
+        image_url: s3_image_url,
         text_input_id: @text_input.id
       ),
       'simplified' => GrammarSimplified::Component.new(
@@ -64,6 +64,16 @@ class TextInputsController < ApplicationController
         text_input_id: @text_input.id
       )
     }[params[:visualization]]
+  end
+
+  def s3_image_url
+    signer = Aws::S3::Presigner.new
+    signer.presigned_url(
+      :get_object,
+      bucket: Rails.application.config.s3_bucket,
+      key: "text_input_#{@text_input.id}.svg",
+      expires_in: 86400
+    )
   end
 
   def create_record
