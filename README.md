@@ -2,7 +2,7 @@
 
 German grammar tree visualizer.
 
-<img width="500" alt="image" src="https://user-images.githubusercontent.com/42254348/201436695-849cda9b-3bea-4f2b-bf5f-7766f7a5b722.png"><img width="500" alt="image" src="https://user-images.githubusercontent.com/42254348/201436818-11a78a54-5af9-4f28-907f-2c6518d29391.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/42254348/201436695-849cda9b-3bea-4f2b-bf5f-7766f7a5b722.png"><img width="800" alt="image" src="https://user-images.githubusercontent.com/42254348/201436818-11a78a54-5af9-4f28-907f-2c6518d29391.png">
 
 This repository purpose is:
 - POC new features of rails 7: hotwire, turbo drive, frame, streams, stymulus.
