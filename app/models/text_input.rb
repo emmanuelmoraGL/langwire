@@ -30,8 +30,14 @@ class TextInput
   end
 
   def initialize(attr_values = {})
-    attrs_user = { user_id: 1 }
+    attr_values.merge!(attrs_users) 
+    attr_values.merge!(attrs_identifier)
+    attr_values.merge!(attrs_timestamps)
+    super(attr_values)
+  end
+
+  def attrs_users
     # Harcoded value because there is no user management yet.
-    super(attrs_identifier.merge(attrs_timestamps).merge(attrs_user).merge(attr_values))
+    { user_id: 1 }
   end
 end
