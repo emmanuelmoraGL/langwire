@@ -25,7 +25,7 @@
           = button_to 'Show Simplified', text_input_visualization_path(text_input),
             id: "btn-vis-simplified",
             method: :post,
-            class: "btn-primary",
+            class: "btn-primary btn-disabled",
             params: { visualization: "simplified", target: "visualization_#{text_input.uuid}" }
       .flex-grow
         turbo-frame

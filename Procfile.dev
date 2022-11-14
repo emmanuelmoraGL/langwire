@@ -1,4 +1,4 @@
 web: bin/rails server -p 3000
 css: bin/rails tailwindcss:watch
-db: cd local/dynamodb && ./start.sh
+# db: cd local/dynamodb && ./start.sh
 parzu: docker run -p 5003:5003 rsennrich/parzu

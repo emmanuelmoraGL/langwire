@@ -4,7 +4,7 @@ class GrammarTable::Component < ApplicationViewComponent
   option :conll_arr
   option :text_input_id
 
-  def conll_field_names
-    Parzu::GrammarDescription::FIELDS.map { |sym| sym.to_s.upcase }
+  def conll_fields
+    Parzu::GrammarDescription::FIELDS
   end
 end

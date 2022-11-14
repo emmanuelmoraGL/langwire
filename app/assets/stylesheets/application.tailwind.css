@@ -35,3 +35,7 @@
 .btn-primary-selected {
   @apply inline-block bg-white text-indigo-600
 }
+
+.btn-primary-disabled {
+  @apply btn-primary bg-indigo-50
+}
