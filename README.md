@@ -56,5 +56,5 @@ bundle exec rspec
 ```
 
 ## Future Work
-- Replace sqlite(default) with DynamoDB.
-- CI/CD
+- [x] Replace sqlite(default) with DynamoDB. Done
+- [ ] CI/CD
