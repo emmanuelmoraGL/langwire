@@ -34,11 +34,11 @@ then, to build and push:
 docker build . --tag <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 docker push <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 ```
-to deploy, run on the infra repository:
+to deploy, run **on the infra repository**:
 ```bash
 terraform apply -replace="aws_ecs_task_definition.main"
 ```
-To fetch the ip used to access the server, run `./describe-ip.sh`
+To fetch the ip used to access the server, run **on the infra repository** `./describe-ip.sh`
 
 ## Local setup
 1. Clone the repo 
