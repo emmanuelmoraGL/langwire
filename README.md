@@ -34,10 +34,11 @@ then, to build and push:
 docker build . --tag <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 docker push <aws-account-id>.dkr.ecr.us-east-1.amazonaws.com/langwire
 ```
-finally, to deploy, run on the infra repository:
+to deploy, run on the infra repository:
 ```bash
 terraform apply -replace="aws_ecs_task_definition.main"
 ```
+To fetch the ip used to access the server, run `./describe-ip.sh`
 
 ## Local setup
 1. Clone the repo 
@@ -54,6 +55,14 @@ bundle exec rake db:schema:load
 ```bash
 bundle exec rspec
 ```
+
+## Troubleshooting
+1. If the S3 bucket or the container repository fail to be provisioned because they already exist, we can import them into the local terraform state:
+``` sh
+terraform import aws_s3_bucket.bucket langwire-labs
+terraform import aws_ecr_repository.main langwire 
+```
+2. If terraform fails because of missing sso options in the aws profile files, this is because the aws provider only supports legacy sso configurations at the time. See https://www.reddit.com/r/aws/comments/zk456d/new_aws_cli_and_sso_sessions_profiles_and_legacy/ 
 
 ## Future Work
 - [x] Replace sqlite(default) with DynamoDB. Done
